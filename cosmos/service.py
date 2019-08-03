@@ -79,5 +79,23 @@ def apod():
         else:
             return _abort(500, 'Internal Service Error', usage=False)
 
+# Error handling
+
+@app.errorhandler(404)
+def page_not_found(e):
+    """
+    Return a custom 404 error.
+    """
+    logging.info('Invalid page request: ' + e)
+    return _abort(404, 'Sorry, this page was not found in our servers.')
+
+@app.errorhandler(500)
+def application_error(e):
+    """
+    Return a custom 500 error.
+    """
+    logging.info('Internal error: ' + e)
+    return _abort(500, 'Sorry, there was an internal error:' + e)
+
 if __name__ == '__main__':
     app.run()
