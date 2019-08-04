@@ -7,7 +7,7 @@ This micro-service is adapted from NASA's [apod-api](https://github.com/nasa/apo
 ## Table of contents
 1. [Getting Started](#getting_started)
     1. [Standard environment](#standard_environment)
-    1. [Heroku](#heroku)
+    2. [Heroku](#heroku)
 2. [Documentation](#documentation)
 4. [Authors](#authors)
 
