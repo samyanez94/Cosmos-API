@@ -1,11 +1,8 @@
 # Cosmos API
 
-A python micro-service built using [Flask microframework](http://flask.pocoo.org) that passes back enhanced information from [Astronomy Picture of the Day](https://apod.nasa.gov/apod/astropix.html).
+A python micro-service built using the [Flask microframework](http://flask.pocoo.org) that passes back enhanced information from [Astronomy Picture of the Day](https://apod.nasa.gov/apod/astropix.html).
 
 This micro-service is adapted from NASA's [apod-api](https://github.com/nasa/apod-api).
-
-
-A fork from NASA's Astronomy Picture of the Day API. A microservice written in Python with the 
 
 ## Table of contents
 1. [Getting Started](#getting_started)
