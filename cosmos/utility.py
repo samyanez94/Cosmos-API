@@ -8,45 +8,46 @@ Created on August 3, 2019
 
 @author=samyanez94 @email=samuelyanez94@gmail.com
 """
+from flask import jsonify
 
-import requests
 import logging
-import datetime
 import re
 
 # Logging
 logging.basicConfig(level=logging.DEBUG)
 
-# Path for NASA's APOD API
-PATH = 'https://api.nasa.gov/planetary/apod'
+# Allowed fields
+ALLOWED_FIELDS = ['concept_tags', 'date', 'hd', 'count', 'start_date', 'end_date', 'thumbnails']
 
-# API key
-KEY = "DEMO_KEY"
+def validate(parameters):
+    logging.info("'_validate' called")
+    for parameter in parameters:
+        if parameter not in ALLOWED_FIELDS:
+            return False
+    return True
 
-def _get_apod(date=None, thumbnails=False):
+def abort(code, msg, service_version):
+    logging.info("'_abort' called")
+    response = jsonify(code=code, msg=msg, service_version=service_version)
+    response.status_code = code
 
-    logging.info("'_get_apod' called")
+    return response
 
-    parameters = {
-        'api_key' : KEY
-    }
+def additional_fields(response, thumbnails, service_version):
+    logging.info("'additional_fields' called")
 
-    if date:
-        date = date.strftime('%Y-%m-%d')
-        parameters.update({'date' : date})
+    url = response['url']
+    media_type = response['media_type']
 
-    return requests.get(PATH, parameters).json()
+    if url and media_type == "video" and thumbnails:
+        response['thumbnail_url'] = _get_thumbnails(url)
 
-def _parse(date=None, thumbnails=False):
-    """
-    Accepts a date in '%Y-%m-%d' format. Returns the URL of the APOD image of that day.
-    """
-    logging.info("'_parse' called")
-
-    return _get_apod(date, thumbnails)
+    response['version'] = service_version
 
 def _get_thumbnails(url):
+
     video_thumb = ""
+
     if "youtube" in url or "youtu.be" in url:
         # Get ID from YouTube URL
         youtube_id_regex = re.compile("(?:(?<=(v|V)/)|(?<=be/)|(?<=(\?|\&)v=)|(?<=embed/))([\w-]+)")
