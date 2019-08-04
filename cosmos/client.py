@@ -53,7 +53,6 @@ def response_for_single_date(date, concept_tags, thumbnails, service_version):
 
     return jsonify(response)
 
-
 def response_for_random_dates(count, concept_tags, thumbnails, service_version):
 
     logging.info("'_response_for_random_dates' called")
