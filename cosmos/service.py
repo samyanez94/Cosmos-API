@@ -4,10 +4,13 @@ Picture of the Day (APOD).
 
 Adapted from code in https://github.com/nasa/planetary-api
 
+Created on August 3, 2019
+
 @author=samyanez94 @email=samuelyanez94@gmail.com
 """
 from datetime import datetime, date
 from flask import Flask, request, redirect, jsonify
+from utility import _parse
 
 import logging
 
@@ -32,14 +35,14 @@ logging.basicConfig(level=logging.DEBUG)
 # Utilities
 
 def _validate(parameters):
-    logging.debug("'_validate' called")
+    logging.info("'_validate' called")
     for parameter in parameters:
-        if argument not in ALLOWED_FIELDS:
+        if parameter not in ALLOWED_FIELDS:
             return False
     return True
 
 def _validate_date(date):
-    logging.debug("'_validate_date' called")
+    logging.info("'_validate_date' called")
 
     today = datetime.today().date()
 
@@ -54,7 +57,7 @@ def _validate_date(date):
         raise ValueError('Date must be between %s and %s.' % (begin_string, today_string))
 
 def _abort(code, msg):
-    logging.debug("'_abort' called")
+    logging.info("'_abort' called")
     response = jsonify(service_version=SERVICE_VERSION, msg=msg, code=code)
     response.status_code = code
 
@@ -62,24 +65,40 @@ def _abort(code, msg):
 
 # Creating the response
 
-def _response_for_date(input_date, use_concept_tags, thumbnails):
+def _handler(date=None, concept_tags=False, thumbnails=False):
+    """
+    Returns the response object to be served through the API.
+    """
+
+    logging.info("'_handler' called")
+
+    try:
+        page_props = _parse(date, thumbnails)
+
+        if concept_tags:
+                page_props['concepts'] = "'concept_tags' functionality is turned off in current service."
+
+        return page_props
+
+    except Exception as exception:
+        return _abort(500, 'Internal Service Error')
+
+def _response_for_date(date, concept_tags, thumbnails):
     """
     Returns the JSON data for a specific date, which must be a string of the form YYYY-MM-DD. If date is None, then it defaults to the current date.
     """
 
     logging.info("'_response_for_date' called")
 
-    if not input_date:
-        # Fall back to using today's date if there is no explicit date
-        input_date = datetime.strftime(datetime.today(), '%Y-%m-%d')
+    if date:
+        # Create date object
+        date = datetime.strptime(date, '%Y-%m-%d').date()
 
-    date = datetime.strptime(input_date, '%Y-%m-%d').date()
-
-    # Validate date
-    _validate_date(date)
+        # Validate date
+        _validate_date(date)
 
     # Get response
-    response = {}
+    response = _handler(date, concept_tags, thumbnails)
     response['version'] = SERVICE_VERSION
 
     # Convert response object to JSON
@@ -107,11 +126,11 @@ def apod():
         count = parameters.get('count')
         start_date = parameters.get('start_date')
         end_date = parameters.get('end_date')
-        use_concept_tags = parameters.get('concept_tags', False)
+        concept_tags = parameters.get('concept_tags', False)
         thumbnails = parameters.get('thumbs', False)
 
         if not count and not start_date and not end_date:
-            return _response_for_date(input_date, use_concept_tags, thumbnails)
+            return _response_for_date(input_date, concept_tags, thumbnails)
 
     # Handle errors
     except Exception as exception:
