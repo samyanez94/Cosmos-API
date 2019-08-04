@@ -53,7 +53,7 @@ def apod():
         concept_tags = parameters.get('concept_tags', False)
         thumbnails = parameters.get('thumbnails', False)
 
-        # Routing to the appropiate method
+        # Route to the appropiate method
 
         if not input_date and not count and not start_date and not end_date:
             return response_for_today_date(concept_tags, thumbnails, SERVICE_VERSION)
@@ -73,7 +73,7 @@ def apod():
         exception_type = type(exception)
 
         if exception_type == ValueError or 'BadRequest' in str(exception_type):
-            return abort(400, str(exception) + '.', SERVICE_VERSION)
+            return abort(400, str(exception), SERVICE_VERSION)
         else:
             return abort(500, 'Internal Service Error', SERVICE_VERSION)
 

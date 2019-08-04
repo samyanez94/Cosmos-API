@@ -19,6 +19,7 @@ logging.basicConfig(level=logging.DEBUG)
 # Allowed fields
 ALLOWED_FIELDS = ['concept_tags', 'date', 'hd', 'count', 'start_date', 'end_date', 'thumbnails']
 
+# Validate parameters
 def validate(parameters):
     logging.info("'_validate' called")
     for parameter in parameters:
@@ -33,29 +34,33 @@ def abort(code, msg, service_version):
 
     return response
 
+# Add additional fields to the response
 def additional_fields(response, thumbnails, service_version):
     logging.info("'additional_fields' called")
 
     url = response['url']
     media_type = response['media_type']
 
+    # Check for thumbnails
     if url and media_type == "video" and thumbnails:
         response['thumbnail_url'] = _get_thumbnails(url)
 
+    # Add service version
     response['version'] = service_version
 
 def _get_thumbnails(url):
 
     video_thumb = ""
 
+    # Get ID from YouTube URL
     if "youtube" in url or "youtu.be" in url:
-        # Get ID from YouTube URL
         youtube_id_regex = re.compile("(?:(?<=(v|V)/)|(?<=be/)|(?<=(\?|\&)v=)|(?<=embed/))([\w-]+)")
         video_id = youtube_id_regex.findall(url)
         video_id = ''.join(''.join(elements) for elements in video_id).replace("?", "").replace("&", "")
         video_thumb = "https://img.youtube.com/vi/" + video_id + "/maxresdefault.jpg"
+
+    # Get ID from Vimeo URL
     elif "vimeo" in url:
-        # Get ID from Vimeo URL
         vimeo_id_regex = re.compile("(?:/video/)(\d+)")
         vimeo_id = vimeo_id_regex.findall(url)[0]
         # Make API call to get thumbnail URL
