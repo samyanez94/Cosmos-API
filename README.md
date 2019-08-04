@@ -1,6 +1,11 @@
-# Astronomy Picture of the Day microservice
+# Cosmos API
 
-A fork from NASA's Astronomy Picture of the Day API. A microservice written in Python with the [Flask microframework](http://flask.pocoo.org).
+A python micro-service built using [Flask microframework](http://flask.pocoo.org) that passes back enhanced information from [Astronomy Picture of the Day](https://apod.nasa.gov/apod/astropix.html).
+
+This micro-service is adapted from NASA's [apod-api](https://github.com/nasa/apod-api).
+
+
+A fork from NASA's Astronomy Picture of the Day API. A microservice written in Python with the 
 
 ## Table of contents
 1. [Getting Started](#getting_started)
@@ -61,7 +66,9 @@ git push heroku master
 
 [API documentation](https://documenter.getpostman.com/view/4492878/SVYnRLcm?version=latest)
 
-## Authors <a name="authors"></a>
-* Samuel Yanez (Forked project from Brian Thomas)
+## Author <a name="authors"></a>
+* Samuel Yanez
+
+Adapted from code from:
 * Brian Thomas
 * Dan Hammer
