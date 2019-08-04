@@ -9,8 +9,10 @@ Created on August 3, 2019
 @author=samyanez94 @email=samuelyanez94@gmail.com
 """
 from flask import Flask, request, redirect, jsonify
-from client import *
-from utility import *
+
+# Relative imports for Heroku
+from .client import *
+from .utility import *
 
 import logging
 
