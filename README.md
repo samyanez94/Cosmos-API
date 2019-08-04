@@ -65,7 +65,3 @@ git push heroku master
 
 ## Author <a name="authors"></a>
 * Samuel Yanez
-
-Adapted from code from:
-* Brian Thomas
-* Dan Hammer
