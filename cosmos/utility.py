@@ -21,7 +21,7 @@ ALLOWED_FIELDS = ['concept_tags', 'date', 'hd', 'count', 'start_date', 'end_date
 
 # Validate parameters
 def validate(parameters):
-    logging.info("'_validate' called")
+    logging.debug("'_validate' called")
     for parameter in parameters:
         if parameter not in ALLOWED_FIELDS:
             return False
@@ -29,7 +29,7 @@ def validate(parameters):
 
 # Response in case of errors
 def abort(code, msg, service_version):
-    logging.info("'_abort' called")
+    logging.debug("'_abort' called")
     response = jsonify(code=code, msg=msg, service_version=service_version)
     response.status_code = code
 
@@ -37,7 +37,7 @@ def abort(code, msg, service_version):
 
 # Add additional fields to the response
 def additional_fields(response, thumbnails, service_version):
-    logging.info("'additional_fields' called")
+    logging.debug("'additional_fields' called")
 
     url = response['url']
     media_type = response['media_type']

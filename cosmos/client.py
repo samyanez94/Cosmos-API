@@ -37,7 +37,7 @@ def _fetch_ranged_dates(start_date, end_date, concept_tags):
 
 def response_for_today_date(concept_tags, thumbnails, service_version):
 
-    logging.info("'_response_for_today_date' called")
+    logging.debug("'_response_for_today_date' called")
 
     response = _fetch(concept_tags)
 
@@ -47,7 +47,7 @@ def response_for_today_date(concept_tags, thumbnails, service_version):
 
 def response_for_single_date(date, concept_tags, thumbnails, service_version):
 
-    logging.info("'_response_for_single_date' called")
+    logging.debug("'_response_for_single_date' called")
 
     response = _fetch_single_date(date, concept_tags)
 
@@ -57,7 +57,7 @@ def response_for_single_date(date, concept_tags, thumbnails, service_version):
 
 def response_for_random_dates(count, concept_tags, thumbnails, service_version):
 
-    logging.info("'_response_for_random_dates' called")
+    logging.debug("'_response_for_random_dates' called")
 
     response = _fetch_random(count, concept_tags)
 
@@ -68,7 +68,7 @@ def response_for_random_dates(count, concept_tags, thumbnails, service_version):
 
 def response_for_ranged_dates(start_date, end_date, concept_tags, thumbnails, service_version):
 
-    logging.info("'_response_for_ranged_dates' called")
+    logging.debug("'_response_for_ranged_dates' called")
 
     response = _fetch_ranged_dates(start_date, end_date, concept_tags)
 
