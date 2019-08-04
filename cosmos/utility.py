@@ -27,6 +27,7 @@ def validate(parameters):
             return False
     return True
 
+# Response in case of errors
 def abort(code, msg, service_version):
     logging.info("'_abort' called")
     response = jsonify(code=code, msg=msg, service_version=service_version)
@@ -48,6 +49,7 @@ def additional_fields(response, thumbnails, service_version):
     # Add service version
     response['version'] = service_version
 
+# Video thumbnails
 def _get_thumbnails(url):
 
     video_thumb = ""
