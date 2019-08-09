@@ -13,27 +13,25 @@ from flask import jsonify
 # Relative imports for Heroku
 from .utility import *
 
+import os
 import requests
 
 # Path for NASA's APOD API
 PATH = 'https://api.nasa.gov/planetary/apod'
 
-# API key
-KEY = "FXB3EPLmocrxkpi0lo7jUkk3ctVWBYBpy3byAYdc"
-
 # Fetching the response from the NASA API
 
 def _fetch(concept_tags):
-    return requests.get(PATH, {'api_key' : KEY, 'concept_tags' : concept_tags}).json()
+    return requests.get(PATH, {'api_key' : os.environ['APOD_API_KEY'], 'concept_tags' : concept_tags}).json()
 
 def _fetch_single_date(date, concept_tags):
-    return requests.get(PATH, {'api_key' : KEY, 'date' : date, 'concept_tags' : concept_tags}).json()
+    return requests.get(PATH, {'api_key' : os.environ['APOD_API_KEY'], 'date' : date, 'concept_tags' : concept_tags}).json()
 
 def _fetch_random(count, concept_tags):
-    return requests.get(PATH, {'api_key' : KEY, 'count' : count, 'concept_tags' : concept_tags}).json()
+    return requests.get(PATH, {'api_key' : os.environ['APOD_API_KEY'], 'count' : count, 'concept_tags' : concept_tags}).json()
 
 def _fetch_ranged_dates(start_date, end_date, concept_tags):
-    return requests.get(PATH, {'api_key' : KEY, 'start_date' : start_date, 'end_date' : end_date, 'concept_tags' : concept_tags}).json()
+    return requests.get(PATH, {'api_key' : os.environ['APOD_API_KEY'], 'start_date' : start_date, 'end_date' : end_date, 'concept_tags' : concept_tags}).json()
 
 def response_for_today_date(concept_tags, thumbnails, service_version):
 
