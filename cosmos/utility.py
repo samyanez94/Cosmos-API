@@ -43,14 +43,18 @@ def additional_fields(response, thumbnails, service_version):
     media_type = response['media_type']
 
     # Check for thumbnails
-    if url and media_type == "video" and thumbnails:
+    if url and media_type == 'video' and thumbnails:
         response['thumbnail_url'] = _get_thumbnails(url)
 
     # Add service version
     response['version'] = service_version
 
+    # Remove NASA's service version
+    del response['service_version']
+
 # Video thumbnails
 def _get_thumbnails(url):
+    logging.debug("'_get_thumbnails' called")
 
     video_thumb = ""
 
