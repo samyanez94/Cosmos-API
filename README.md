@@ -17,11 +17,11 @@ This micro-service is adapted from NASA's [apod-api](https://github.com/nasa/apo
 
 1. Clone the repo
 ```bash
-git clone https://github.com/nasa/apod-api
+git clone https://github.com/samyanez94/cosmos-api
 ```
 2. `cd` into the new directory
 ```bash
-cd apod-api
+cd cosmos-api
 ```
 3. Install dependencies
 ```bash
@@ -36,7 +36,7 @@ python apod/service.py
 
 1. Clone the repo
 ```bash
-git clone https://github.com/nasa/apod-api
+git clone https://github.com/samyanez94/cosmos-api
 ```
 2. `cd` into the new directory
 ```bash
