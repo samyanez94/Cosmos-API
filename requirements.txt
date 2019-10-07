@@ -1,6 +1,6 @@
-# Lists all third-party dependencies for this project.
+# Lists all third-party dependencies for this project. Run 'pip install -r requirements.txt' to install.
 #
-# Run 'pip install -r requirements.txt' to install.
+#
 #
 
 flask>=1.0.4
