@@ -27,9 +27,9 @@ cd cosmos-api
 ```bash
 pip install -r requirements.txt
 ```
-4. Run the server
+4. Run the server (Requires Python 3)
 ```bash
-python apod/service.py
+python cosmos/service.py
 ```
 
 ### Heroku deployment <a name="heroku"></a>
@@ -54,7 +54,11 @@ heroku login
 ```bash
 heroku create
 ```
-6. Deploy
+6. Run the app locally
+```bash
+heroku local
+```
+7. Deploy
 ```bash
 git push heroku master
 ```
