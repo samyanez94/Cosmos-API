@@ -9,7 +9,7 @@ This micro-service is adapted from NASA's [apod-api](https://github.com/nasa/apo
     1. [Standard environment](#standard_environment)
     2. [Heroku](#heroku)
 2. [Documentation](#documentation)
-4. [Authors](#authors)
+4. [Authors](#author)
 
 ## Getting started <a name="getting_started"></a>
 
@@ -63,5 +63,9 @@ git push heroku master
 
 [API documentation](https://documenter.getpostman.com/view/4492878/SVYnRLcm?version=latest)
 
-## Author <a name="authors"></a>
-* Samuel Yanez
+## Author <a name="author"></a>
+* Samuel Yanez ~ [samyanez94](https://github.com/samyanez94)
+
+## License
+
+MIT © Samuel Yanez
