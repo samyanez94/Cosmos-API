@@ -12,6 +12,7 @@ from flask import jsonify
 
 import logging
 import re
+import requests
 
 # Logging
 logging.basicConfig(level=logging.DEBUG)
@@ -61,16 +62,16 @@ def _get_thumbnails(url):
     # Get ID from YouTube URL
     if "youtube" in url or "youtu.be" in url:
         youtube_id_regex = re.compile("(?:(?<=(v|V)/)|(?<=be/)|(?<=(\?|\&)v=)|(?<=embed/))([\w-]+)")
-        video_id = youtube_id_regex.findall(url)
-        video_id = ''.join(''.join(elements) for elements in video_id).replace("?", "").replace("&", "")
-        video_thumb = "https://img.youtube.com/vi/" + video_id + "/maxresdefault.jpg"
+        youtube_id = youtube_id_regex.findall(url)
+        youtube_id = ''.join(''.join(elements) for elements in youtube_id).replace("?", "").replace("&", "")
+        video_thumb = "https://img.youtube.com/vi/" + youtube_id + "/maxresdefault.jpg"
 
     # Get ID from Vimeo URL
     elif "vimeo" in url:
         vimeo_id_regex = re.compile("(?:/video/)(\d+)")
         vimeo_id = vimeo_id_regex.findall(url)[0]
-        # Make API call to get thumbnail URL
-        response = requests.get("https://vimeo.com/api/v2/video/" + vimeo_id + ".json").json()
-        video_thumb = response['thumbnail_large']
+        vimeo_url = "https://vimeo.com/api/v2/video/" + vimeo_id + ".json"
+        vimeo_response = requests.get(vimeo_url).json()
+        video_thumb = vimeo_response[0]['thumbnail_large']
 
     return video_thumb
