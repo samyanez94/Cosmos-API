@@ -1,7 +1,4 @@
 # Lists all third-party dependencies for this project. Run 'pip install -r requirements.txt' to install.
-#
-#
-#
 
 flask>=1.0.4
 gunicorn>=19.9.0
