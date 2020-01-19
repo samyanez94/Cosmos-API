@@ -6,14 +6,14 @@ This micro-service is adapted from NASA's [apod-api](https://github.com/nasa/apo
 
 ## Table of contents
 1. [Getting Started](#getting_started)
-    1. [Standard environment](#standard_environment)
-    2. [Heroku](#heroku)
+    1. [Local Deployment](#local_deployment)
+    2. [Heroku Deployment](#heroku)
 2. [Documentation](#documentation)
 4. [Authors](#author)
 
 ## Getting started <a name="getting_started"></a>
 
-### Standard environment <a name="standard_environment"></a>
+### Local deployment <a name="local_deployment"></a>
 
 1. Clone the repo
 ```bash
@@ -54,11 +54,7 @@ heroku login
 ```bash
 heroku create
 ```
-6. Run the app locally
-```bash
-heroku local
-```
-7. Deploy
+6. Deploy
 ```bash
 git push heroku master
 ```
