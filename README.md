@@ -1,3 +1,5 @@
+![Actions Status](https://github.com/samyanez94/cosmos-api/workflows/Test%20Python%20app/badge.svg)
+
 # Cosmos API
 
 A python micro-service built using the [Flask micro-framework](http://flask.pocoo.org) that passes back enhanced information from [Astronomy Picture of the Day](https://apod.nasa.gov/apod/astropix.html).
