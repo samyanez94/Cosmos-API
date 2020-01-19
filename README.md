@@ -1,4 +1,4 @@
-![Actions Status](https://github.com/samyanez94/cosmos-api/workflows/Test%20Python%20app/badge.svg)
+![Actions Status](https://github.com/samyanez94/cosmos-api/workflows/Run%20tests/badge.svg)
 
 # Cosmos API
 
