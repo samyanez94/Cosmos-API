@@ -65,7 +65,7 @@ git push heroku master
 
 [API documentation](https://documenter.getpostman.com/view/4492878/SVYnRLcm?version=latest)
 
-## Author <a name="author"></a>
+## Authors <a name="author"></a>
 * Samuel Yanez ~ [samyanez94](https://github.com/samyanez94)
 
 ## License
