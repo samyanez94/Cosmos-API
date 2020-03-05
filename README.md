@@ -11,7 +11,7 @@ This micro-service is adapted from NASA's [apod-api](https://github.com/nasa/apo
     1. [Local Deployment](#local_deployment)
     2. [Heroku Deployment](#heroku)
 2. [Documentation](#documentation)
-4. [Authors](#author)
+4. [Authors](#authors)
 
 ## Getting started <a name="getting_started"></a>
 
@@ -65,7 +65,7 @@ git push heroku master
 
 [API documentation](https://documenter.getpostman.com/view/4492878/SVYnRLcm?version=latest)
 
-## Authors <a name="author"></a>
+## Authors <a name="authors"></a>
 * Samuel Yanez ~ [samyanez94](https://github.com/samyanez94)
 
 ## License
